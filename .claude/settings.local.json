@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.thefmspower.com)",
+      "Bash(mkdir:*)"
+    ]
+  }
+}

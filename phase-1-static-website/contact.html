@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact FM's Power for solar inverters, batteries, and panels. Visit our store in Saddar, Karachi or call 0322-2550299.">
+  <title>Contact Us | FM's Power - Premium Solar Solutions</title>
+
+  <link rel="icon" type="image/svg+xml" href="images/logo/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    .page-header {
+      padding: calc(var(--header-height) + var(--space-16)) 0 var(--space-16);
+      background: var(--bg-secondary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-mesh);
+      opacity: 0.5;
+    }
+
+    .page-header .container { position: relative; z-index: 1; }
+    .page-header h1 { font-size: var(--text-5xl); margin-bottom: var(--space-4); }
+    .page-header p { font-size: var(--text-lg); color: var(--text-secondary); max-width: 600px; }
+
+    /* Contact Section */
+    .contact-section { padding: var(--space-16) 0; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: start;
+    }
+
+    /* Contact Form */
+    .contact-form-wrapper {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      backdrop-filter: var(--glass-blur);
+    }
+
+    .contact-form-title { font-size: var(--text-2xl); margin-bottom: var(--space-2); }
+    .contact-form-subtitle { color: var(--text-secondary); margin-bottom: var(--space-6); }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+
+    /* Contact Info Cards */
+    .contact-info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
+    .contact-info-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: var(--space-6);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      transition: var(--transition-fast);
+    }
+
+    .contact-info-card:hover {
+      background: var(--glass-bg-hover);
+      border-color: var(--color-primary-500);
+      transform: translateY(-3px);
+    }
+
+    .contact-info-icon {
+      width: 56px;
+      height: 56px;
+      margin-bottom: var(--space-4);
+      background: var(--gradient-primary);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .contact-info-icon svg { width: 28px; height: 28px; }
+    .contact-info-card h4 { font-size: var(--text-base); margin-bottom: var(--space-2); }
+    .contact-info-card p { font-size: var(--text-sm); color: var(--text-secondary); margin: 0; }
+    .contact-info-card a { color: var(--text-secondary); transition: color var(--duration-fast); }
+    .contact-info-card a:hover { color: var(--color-primary-400); }
+
+    /* Map */
+    .map-wrapper {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+      height: 300px;
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      filter: grayscale(1) invert(0.92) contrast(0.9);
+    }
+
+    /* Quick Contact Buttons */
+    .quick-contact {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+    }
+
+    .quick-contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      border-radius: var(--radius-xl);
+      font-size: var(--text-base);
+      font-weight: var(--font-medium);
+      transition: var(--transition-fast);
+    }
+
+    .quick-contact-btn svg { width: 24px; height: 24px; }
+
+    .quick-contact-btn.whatsapp {
+      background: #25D366;
+      color: white;
+    }
+
+    .quick-contact-btn.whatsapp:hover {
+      background: #128C7E;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+    }
+
+    .quick-contact-btn.phone {
+      background: var(--gradient-primary);
+      color: white;
+    }
+
+    .quick-contact-btn.phone:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-glow-md);
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: var(--space-16) 0;
+      background: var(--bg-secondary);
+    }
+
+    .faq-grid {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .accordion { display: flex; flex-direction: column; gap: var(--space-3); }
+
+    .accordion-item {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      backdrop-filter: var(--glass-blur);
+    }
+
+    .accordion-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-5) var(--space-6);
+      font-size: var(--text-base);
+      font-weight: var(--font-medium);
+      color: var(--text-primary);
+      text-align: left;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .accordion-header:hover { color: var(--color-primary-400); }
+
+    .accordion-icon {
+      width: 24px;
+      height: 24px;
+      color: var(--text-muted);
+      transition: transform var(--duration-normal) var(--ease-out);
+    }
+
+    .accordion-item.active .accordion-icon {
+      transform: rotate(180deg);
+      color: var(--color-primary-400);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--duration-normal) var(--ease-out);
+    }
+
+    .accordion-item.active .accordion-content { max-height: 500px; }
+
+    .accordion-body {
+      padding: 0 var(--space-6) var(--space-5);
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* Header, Footer */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: var(--z-sticky);
+      padding: var(--space-4) 0;
+      background: rgba(10, 10, 11, 0.85);
+      backdrop-filter: var(--glass-blur-lg);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .header .container { display: flex; align-items: center; justify-content: space-between; }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: var(--font-bold);
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .logo-icon svg { width: 24px; height: 24px; }
+    .logo span { background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+    .nav { display: flex; align-items: center; gap: var(--space-8); }
+    .nav-links { display: flex; gap: var(--space-6); }
+
+    .nav-link {
+      font-size: var(--text-sm);
+      font-weight: var(--font-medium);
+      color: var(--text-secondary);
+      position: relative;
+      padding: var(--space-2) 0;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-primary);
+      transition: width var(--duration-normal) var(--ease-out);
+    }
+
+    .nav-link:hover, .nav-link.active { color: var(--text-primary); }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: var(--gradient-primary);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: var(--font-medium);
+      color: white;
+    }
+
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: var(--shadow-glow-md); }
+    .nav-cta svg { width: 18px; height: 18px; }
+
+    .menu-toggle { display: none; flex-direction: column; gap: 5px; width: 28px; cursor: pointer; padding: var(--space-2); }
+    .menu-toggle span { display: block; height: 2px; width: 100%; background: var(--text-primary); border-radius: var(--radius-full); }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 11, 0.98);
+      backdrop-filter: var(--glass-blur-lg);
+      z-index: var(--z-modal);
+      padding: var(--space-24) var(--space-6) var(--space-6);
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .mobile-nav.active { opacity: 1; visibility: visible; }
+    .mobile-nav-links { display: flex; flex-direction: column; gap: var(--space-4); }
+    .mobile-nav-link { font-size: var(--text-2xl); font-weight: var(--font-semibold); color: var(--text-primary); padding: var(--space-3) 0; border-bottom: 1px solid var(--border-primary); }
+    .mobile-nav-cta { margin-top: auto; display: flex; flex-direction: column; gap: var(--space-3); }
+
+    .footer { background: var(--bg-primary); padding: var(--space-16) 0 var(--space-8); border-top: 1px solid var(--border-primary); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--space-12); margin-bottom: var(--space-12); }
+    .footer-brand { max-width: 300px; }
+    .footer-brand .logo { margin-bottom: var(--space-4); }
+    .footer-brand p { font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-6); }
+    .footer-social { display: flex; gap: var(--space-3); }
+    .footer-social a { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); color: var(--text-secondary); }
+    .footer-social a:hover { background: var(--color-primary-500); border-color: var(--color-primary-500); color: white; }
+    .footer-social svg { width: 18px; height: 18px; }
+    .footer-column h4 { font-size: var(--text-sm); font-weight: var(--font-semibold); color: var(--text-primary); text-transform: uppercase; letter-spacing: var(--tracking-wider); margin-bottom: var(--space-4); }
+    .footer-links { display: flex; flex-direction: column; gap: var(--space-3); }
+    .footer-links a { font-size: var(--text-sm); color: var(--text-secondary); }
+    .footer-links a:hover { color: var(--color-primary-400); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: var(--space-8); border-top: 1px solid var(--border-primary); }
+    .footer-copyright { font-size: var(--text-sm); color: var(--text-muted); }
+    .footer-legal { display: flex; gap: var(--space-6); }
+    .footer-legal a { font-size: var(--text-sm); color: var(--text-muted); }
+
+    @media (max-width: 1023px) {
+      .nav-links, .nav-cta { display: none; }
+      .menu-toggle { display: flex; }
+      .mobile-nav { display: flex; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-info-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 767px) {
+      .page-header h1 { font-size: var(--text-3xl); }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-info-grid { grid-template-columns: 1fr; }
+      .quick-contact { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: var(--space-4); text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader"><div class="loader-spinner"></div></div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
+        <span>FM's Power</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="products.html" class="nav-link">Products</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link active">Contact</a></li>
+        </ul>
+        <a href="https://wa.me/923222550299" target="_blank" class="nav-cta">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <ul class="mobile-nav-links">
+      <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li><a href="products.html" class="mobile-nav-link">Products</a></li>
+      <li><a href="about.html" class="mobile-nav-link">About</a></li>
+      <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+    </ul>
+    <div class="mobile-nav-cta">
+      <a href="https://wa.me/923222550299" target="_blank" class="btn btn-primary btn-lg">Chat on WhatsApp</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <nav class="breadcrumb reveal">
+          <a href="index.html">Home</a>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">Contact</span>
+        </nav>
+        <h1 class="reveal">Get in <span class="text-gradient">Touch</span></h1>
+        <p class="reveal">Have questions about our solar solutions? We're here to help. Contact us via phone, email, or visit our store in Karachi.</p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Contact Form -->
+          <div class="contact-form-wrapper reveal">
+            <h2 class="contact-form-title">Send us a Message</h2>
+            <p class="contact-form-subtitle">Fill out the form below and we'll get back to you within 24 hours.</p>
+
+            <form id="contactForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name" class="form-label">Full Name *</label>
+                  <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required>
+                  <span class="form-error">Please enter your name</span>
+                </div>
+                <div class="form-group">
+                  <label for="email" class="form-label">Email Address *</label>
+                  <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required>
+                  <span class="form-error">Please enter a valid email</span>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="phone" class="form-label">Phone Number *</label>
+                  <input type="tel" id="phone" name="phone" class="form-input" placeholder="03XX-XXXXXXX" required>
+                  <span class="form-error">Please enter your phone number</span>
+                </div>
+                <div class="form-group">
+                  <label for="subject" class="form-label">Subject</label>
+                  <select id="subject" name="subject" class="form-input">
+                    <option value="">Select a subject</option>
+                    <option value="product-inquiry">Product Inquiry</option>
+                    <option value="price-quote">Price Quote</option>
+                    <option value="installation">Installation Service</option>
+                    <option value="support">Technical Support</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="message" class="form-label">Message *</label>
+                <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your requirements..." required></textarea>
+                <span class="form-error">Please enter your message</span>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                <span class="btn-text">Send Message</span>
+                <span class="btn-loader hidden"><span class="spinner spinner-sm"></span></span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </form>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="contact-info-wrapper">
+            <div class="contact-info-grid">
+              <div class="contact-info-card reveal" data-delay="0">
+                <div class="contact-info-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <h4>Visit Us</h4>
+                <p>Shop G31-G50, Ground Floor<br>Al-Najeebi Electronic Bazar<br>Agha Khan Road 3, Saddar, Karachi</p>
+              </div>
+
+              <div class="contact-info-card reveal" data-delay="100">
+                <div class="contact-info-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <h4>Call Us</h4>
+                <p><a href="tel:03222550299">0322-2550299</a></p>
+              </div>
+
+              <div class="contact-info-card reveal" data-delay="200">
+                <div class="contact-info-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <h4>Email Us</h4>
+                <p><a href="mailto:thefmstrading@gmail.com">thefmstrading@gmail.com</a></p>
+              </div>
+
+              <div class="contact-info-card reveal" data-delay="300">
+                <div class="contact-info-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <h4>Business Hours</h4>
+                <p>Mon - Sat: 10AM - 8PM<br>Sunday: Closed</p>
+              </div>
+            </div>
+
+            <!-- Map -->
+            <div class="map-wrapper reveal" data-delay="400">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.0876!2d67.0300!3d24.8600!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDUxJzM2LjAiTiA2N8KwMDEnNDguMCJF!5e0!3m2!1sen!2s!4v1234567890"
+                width="100%"
+                height="300"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                title="FM's Power Location">
+              </iframe>
+            </div>
+
+            <!-- Quick Contact Buttons -->
+            <div class="quick-contact reveal">
+              <a href="https://wa.me/923222550299?text=Hi! I'm interested in FM's Power solar solutions." target="_blank" class="quick-contact-btn whatsapp">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Chat on WhatsApp
+              </a>
+              <a href="tel:03222550299" class="quick-contact-btn phone">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Call Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="reveal">Frequently Asked <span class="text-gradient">Questions</span></h2>
+          <p class="reveal">Find answers to common questions about our solar products and services.</p>
+        </div>
+
+        <div class="faq-grid">
+          <div class="accordion">
+            <div class="accordion-item reveal" data-delay="0">
+              <button class="accordion-header">
+                What warranty do you offer on your products?
+                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  We offer a comprehensive 5-year warranty on all our inverters and lithium batteries, and a 15-year warranty on solar panels. Our warranty covers manufacturing defects and performance issues. We provide hassle-free replacement or repair services during the warranty period.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item reveal" data-delay="100">
+              <button class="accordion-header">
+                Do you provide installation services?
+                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  Yes, we provide professional installation services across Karachi and surrounding areas. Our certified technicians ensure safe and efficient installation with minimal disruption. Installation charges vary based on system size and complexity. Contact us for a free site assessment and quote.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item reveal" data-delay="200">
+              <button class="accordion-header">
+                How do I choose the right inverter size for my home?
+                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  The right inverter size depends on your total power consumption and the appliances you want to run. As a general guide: 1.6KW is suitable for small homes with basic appliances, 4KW for medium homes with ACs, and 6.2KW for larger homes or small businesses. Contact us for a free consultation - we'll analyze your electricity bills and recommend the perfect solution.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item reveal" data-delay="300">
+              <button class="accordion-header">
+                Can I monitor my solar system remotely?
+                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  Yes! All our inverters come with smart monitoring capabilities. You can download our mobile app (available for iOS and Android) to track real-time power generation, consumption, battery status, and system health from anywhere. You'll also receive alerts for any issues or maintenance requirements.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item reveal" data-delay="400">
+              <button class="accordion-header">
+                What payment methods do you accept?
+                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  We accept cash payments, bank transfers, and easy monthly installment plans through various banks. For larger systems, we can arrange financing options. Contact us to discuss the payment plan that works best for you. A deposit is required to confirm your order, with the balance due upon installation.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item reveal" data-delay="500">
+              <button class="accordion-header">
+                How long does installation typically take?
+                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  For a standard residential installation, the process typically takes 1-2 days depending on the system size and site conditions. This includes mounting solar panels, installing the inverter and battery system, and configuring the monitoring system. Larger commercial installations may take longer. We'll provide a detailed timeline during the site assessment.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
+            <span>FM's Power</span>
+          </a>
+          <p>Premium solar inverters, lithium batteries, and solar panels. Save energy, build a better future.</p>
+          <div class="footer-social">
+            <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Products</h4>
+          <ul class="footer-links">
+            <li><a href="products.html?category=inverters">Solar Inverters</a></li>
+            <li><a href="products.html?category=batteries">Lithium Batteries</a></li>
+            <li><a href="products.html?category=panels">Solar Panels</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="tel:03222550299">0322-2550299</a></li>
+            <li><a href="mailto:thefmstrading@gmail.com">thefmstrading@gmail.com</a></li>
+            <li><a href="https://wa.me/923222550299">WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2024 FM's Power. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/923222550299" target="_blank" class="whatsapp-float"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+  <button class="back-to-top" id="backToTop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg></button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

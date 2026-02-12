@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="S.O Series 6.2 KW Professional Hybrid Solar Inverter - 6200W Output, 48V, Pure Sine Wave with 5-Year Warranty from FM's Power.">
+  <title>S.O Series 6.2 KW Inverter | FM's Power</title>
+
+  <link rel="icon" type="image/svg+xml" href="images/logo/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    /* Page Header */
+    .page-header {
+      padding: calc(var(--header-height) + var(--space-8)) 0 var(--space-8);
+      background: var(--bg-secondary);
+    }
+
+    /* Product Detail Section */
+    .product-detail-section {
+      padding: var(--space-8) 0 var(--space-16);
+      background: var(--bg-secondary);
+    }
+
+    .product-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: start;
+    }
+
+    /* Gallery */
+    .product-gallery {
+      position: sticky;
+      top: calc(var(--header-height) + var(--space-4));
+    }
+
+    .gallery-main {
+      position: relative;
+      aspect-ratio: 1;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      cursor: zoom-in;
+      margin-bottom: var(--space-4);
+    }
+
+    .gallery-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: var(--space-8);
+      transition: transform var(--duration-normal) var(--ease-out);
+    }
+
+    .gallery-main:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-thumbs {
+      display: flex;
+      gap: var(--space-3);
+    }
+
+    .gallery-thumb {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      background: var(--glass-bg);
+      opacity: 0.6;
+      transition: var(--transition-fast);
+    }
+
+    .gallery-thumb:hover,
+    .gallery-thumb.active {
+      opacity: 1;
+      border-color: var(--color-primary-500);
+    }
+
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: var(--space-2);
+    }
+
+    /* Product Info */
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .product-badges {
+      display: flex;
+      gap: var(--space-2);
+    }
+
+    .product-category {
+      padding: var(--space-1) var(--space-3);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: var(--font-medium);
+      color: var(--color-primary-400);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+    }
+
+    .product-featured {
+      padding: var(--space-1) var(--space-3);
+      background: var(--gradient-gold);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: var(--font-semibold);
+      color: var(--color-neutral-950);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+    }
+
+    .product-title {
+      font-size: var(--text-4xl);
+      font-weight: var(--font-bold);
+      line-height: var(--leading-tight);
+    }
+
+    .product-description {
+      font-size: var(--text-lg);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* Quick Specs */
+    .quick-specs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+    }
+
+    .quick-spec {
+      text-align: center;
+      padding: var(--space-4);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+    }
+
+    .quick-spec-value {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      color: var(--color-primary-400);
+      margin-bottom: var(--space-1);
+    }
+
+    .quick-spec-label {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
+
+    /* Warranty Badge */
+    .warranty-badge {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: var(--radius-xl);
+    }
+
+    .warranty-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .warranty-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .warranty-text h4 {
+      font-size: var(--text-base);
+      margin-bottom: var(--space-1);
+    }
+
+    .warranty-text p {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    /* CTA Buttons */
+    .product-cta {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .product-cta .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .contact-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+    }
+
+    .contact-option {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-3);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      transition: var(--transition-fast);
+    }
+
+    .contact-option:hover {
+      background: var(--glass-bg-hover);
+      color: var(--text-primary);
+    }
+
+    .contact-option svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Specifications Section */
+    .specifications-section {
+      padding: var(--space-16) 0;
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+    }
+
+    .specs-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-6);
+      backdrop-filter: var(--glass-blur);
+    }
+
+    .specs-card h3 {
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .specs-card h3 svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-primary-400);
+    }
+
+    .specs-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .specs-item {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--border-primary);
+    }
+
+    .specs-item:last-child {
+      border-bottom: none;
+    }
+
+    .specs-label {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+
+    .specs-value {
+      font-size: var(--text-sm);
+      font-family: var(--font-mono);
+      color: var(--text-primary);
+      font-weight: var(--font-medium);
+    }
+
+    /* Features List */
+    .features-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+
+    .feature-item svg {
+      width: 20px;
+      height: 20px;
+      color: var(--color-primary-400);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Related Products */
+    .related-section {
+      padding: var(--space-16) 0;
+      background: var(--bg-secondary);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+
+    /* Inquiry Form */
+    .inquiry-section {
+      padding: var(--space-16) 0;
+    }
+
+    .inquiry-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      backdrop-filter: var(--glass-blur);
+    }
+
+    .inquiry-wrapper h3 {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-2);
+      text-align: center;
+    }
+
+    .inquiry-wrapper > p {
+      text-align: center;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-6);
+    }
+
+    /* Header & Footer common styles included */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: var(--z-sticky);
+      padding: var(--space-4) 0;
+      background: rgba(10, 10, 11, 0.85);
+      backdrop-filter: var(--glass-blur-lg);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: var(--font-bold);
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .logo-icon svg { width: 24px; height: 24px; }
+
+    .logo span {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav { display: flex; align-items: center; gap: var(--space-8); }
+    .nav-links { display: flex; gap: var(--space-6); }
+
+    .nav-link {
+      font-size: var(--text-sm);
+      font-weight: var(--font-medium);
+      color: var(--text-secondary);
+      position: relative;
+      padding: var(--space-2) 0;
+      transition: color var(--duration-fast) var(--ease-out);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-primary);
+      transition: width var(--duration-normal) var(--ease-out);
+    }
+
+    .nav-link:hover, .nav-link.active { color: var(--text-primary); }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: var(--gradient-primary);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: var(--font-medium);
+      color: white;
+      transition: var(--transition-fast);
+    }
+
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: var(--shadow-glow-md); }
+    .nav-cta svg { width: 18px; height: 18px; }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      width: 28px;
+      cursor: pointer;
+      padding: var(--space-2);
+    }
+
+    .menu-toggle span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background: var(--text-primary);
+      border-radius: var(--radius-full);
+      transition: var(--transition-fast);
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(10, 10, 11, 0.98);
+      backdrop-filter: var(--glass-blur-lg);
+      z-index: var(--z-modal);
+      padding: var(--space-24) var(--space-6) var(--space-6);
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition-normal);
+    }
+
+    .mobile-nav.active { opacity: 1; visibility: visible; }
+    .mobile-nav-links { display: flex; flex-direction: column; gap: var(--space-4); }
+
+    .mobile-nav-link {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-semibold);
+      color: var(--text-primary);
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--border-primary);
+    }
+
+    .mobile-nav-cta { margin-top: auto; display: flex; flex-direction: column; gap: var(--space-3); }
+
+    .footer {
+      background: var(--bg-primary);
+      padding: var(--space-16) 0 var(--space-8);
+      border-top: 1px solid var(--border-primary);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--space-12);
+      margin-bottom: var(--space-12);
+    }
+
+    .footer-brand { max-width: 300px; }
+    .footer-brand .logo { margin-bottom: var(--space-4); }
+    .footer-brand p { font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-6); }
+    .footer-social { display: flex; gap: var(--space-3); }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      color: var(--text-secondary);
+      transition: var(--transition-fast);
+    }
+
+    .footer-social a:hover {
+      background: var(--color-primary-500);
+      border-color: var(--color-primary-500);
+      color: white;
+    }
+
+    .footer-social svg { width: 18px; height: 18px; }
+
+    .footer-column h4 {
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      margin-bottom: var(--space-4);
+    }
+
+    .footer-links { display: flex; flex-direction: column; gap: var(--space-3); }
+    .footer-links a { font-size: var(--text-sm); color: var(--text-secondary); }
+    .footer-links a:hover { color: var(--color-primary-400); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: var(--space-8);
+      border-top: 1px solid var(--border-primary);
+    }
+
+    .footer-copyright { font-size: var(--text-sm); color: var(--text-muted); }
+    .footer-legal { display: flex; gap: var(--space-6); }
+    .footer-legal a { font-size: var(--text-sm); color: var(--text-muted); }
+
+    /* Product card styles for related */
+    .product-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      transition: var(--transition-normal);
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--color-primary-500);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .product-image {
+      position: relative;
+      height: 200px;
+      background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-image img {
+      max-width: 80%;
+      max-height: 80%;
+      object-fit: contain;
+      transition: transform var(--duration-slow) var(--ease-out);
+    }
+
+    .product-card:hover .product-image img { transform: scale(1.08); }
+
+    .product-category-badge {
+      position: absolute;
+      top: var(--space-3);
+      right: var(--space-3);
+      padding: var(--space-1) var(--space-2);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--color-primary-400);
+      font-size: var(--text-xs);
+      border-radius: var(--radius-full);
+    }
+
+    .product-content { padding: var(--space-5); }
+    .product-card .product-title { font-size: var(--text-lg); margin-bottom: var(--space-3); }
+
+    .product-link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: var(--font-medium);
+      color: var(--color-primary-400);
+    }
+
+    .product-link svg { width: 16px; height: 16px; }
+
+    /* Responsive */
+    @media (max-width: 1023px) {
+      .nav-links, .nav-cta { display: none; }
+      .menu-toggle { display: flex; }
+      .mobile-nav { display: flex; }
+      .product-detail-grid { grid-template-columns: 1fr; }
+      .product-gallery { position: relative; top: 0; }
+      .specs-grid { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 767px) {
+      .quick-specs { grid-template-columns: 1fr; }
+      .contact-options { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: var(--space-4); text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader"><div class="loader-spinner"></div></div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </div>
+        <span>FM's Power</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="products.html" class="nav-link active">Products</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <a href="https://wa.me/923222550299" target="_blank" class="nav-cta">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <ul class="mobile-nav-links">
+      <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li><a href="products.html" class="mobile-nav-link">Products</a></li>
+      <li><a href="about.html" class="mobile-nav-link">About</a></li>
+      <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+    </ul>
+    <div class="mobile-nav-cta">
+      <a href="https://wa.me/923222550299" target="_blank" class="btn btn-primary btn-lg">Chat on WhatsApp</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Breadcrumb -->
+    <section class="page-header">
+      <div class="container">
+        <nav class="breadcrumb reveal">
+          <a href="index.html">Home</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="products.html">Products</a>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">S.O Series 6.2 KW</span>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Product Detail -->
+    <section class="product-detail-section">
+      <div class="container">
+        <div class="product-detail-grid">
+          <!-- Gallery -->
+          <div class="product-gallery reveal">
+            <div class="gallery-main">
+              <img src="images/products/inverter-6.2kw.png" alt="S.O Series 6.2 KW Inverter" id="mainImage">
+            </div>
+            <div class="gallery-thumbs">
+              <div class="gallery-thumb active">
+                <img src="images/products/inverter-6.2kw.png" alt="Front View">
+              </div>
+              <div class="gallery-thumb">
+                <img src="images/products/inverter-6.2kw.png" alt="Side View">
+              </div>
+              <div class="gallery-thumb">
+                <img src="images/products/inverter-6.2kw.png" alt="Back View">
+              </div>
+              <div class="gallery-thumb">
+                <img src="images/products/inverter-6.2kw.png" alt="Display View">
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Info -->
+          <div class="product-info">
+            <div class="product-badges reveal">
+              <span class="product-category">Inverter</span>
+              <span class="product-featured">Best Seller</span>
+            </div>
+
+            <h1 class="product-title reveal">S.O Series 6.2 KW Professional Hybrid Inverter</h1>
+
+            <p class="product-description reveal">
+              The S.O Series 6.2 KW is our flagship hybrid solar inverter, designed for residential and commercial applications requiring high power output. With 98.5% efficiency and advanced MPPT technology, it delivers maximum performance in all conditions.
+            </p>
+
+            <!-- Quick Specs -->
+            <div class="quick-specs reveal">
+              <div class="quick-spec">
+                <div class="quick-spec-value">6200W</div>
+                <div class="quick-spec-label">Output Power</div>
+              </div>
+              <div class="quick-spec">
+                <div class="quick-spec-value">48V</div>
+                <div class="quick-spec-label">Battery Voltage</div>
+              </div>
+              <div class="quick-spec">
+                <div class="quick-spec-value">98.5%</div>
+                <div class="quick-spec-label">Efficiency</div>
+              </div>
+            </div>
+
+            <!-- Warranty Badge -->
+            <div class="warranty-badge reveal">
+              <div class="warranty-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="warranty-text">
+                <h4>5-Year Comprehensive Warranty</h4>
+                <p>Full coverage for parts and labor. Hassle-free replacement guarantee.</p>
+              </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="product-cta reveal">
+              <a href="https://wa.me/923222550299?text=Hi! I'm interested in the S.O Series 6.2 KW Inverter. Can you provide more details and pricing?" target="_blank" class="btn btn-gold btn-lg">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Inquire on WhatsApp
+              </a>
+
+              <div class="contact-options">
+                <a href="tel:03222550299" class="contact-option">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  Call Now
+                </a>
+                <a href="mailto:thefmstrading@gmail.com?subject=Inquiry: S.O Series 6.2 KW Inverter" class="contact-option">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  Email Us
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Specifications -->
+    <section class="specifications-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="reveal">Technical <span class="text-gradient">Specifications</span></h2>
+        </div>
+
+        <div class="specs-grid">
+          <div class="specs-card reveal">
+            <h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              Power Specifications
+            </h3>
+            <div class="specs-list">
+              <div class="specs-item">
+                <span class="specs-label">Rated Output Power</span>
+                <span class="specs-value">6200W</span>
+              </div>
+              <div class="specs-item">
+                <span class="specs-label">Maximum Input Power</span>
+                <span class="specs-value">8500W</span>
+              </div>
+              <div class="specs-item">
+                <span class="specs-label">Battery Voltage</span>
+                <span class="specs-value">48V DC</span>
+              </div>
+              <div class="specs-item">
+                <span class="specs-label">Output Voltage</span>
+                <span class="specs-value">220V/230V AC</span>
+              </div>
+              <div class="specs-item">
+                <span class="specs-label">Output Frequency</span>
+                <span class="specs-value">50Hz/60Hz</span>
+              </div>
+              <div class="specs-item">
+                <span class="specs-label">Waveform</span>
+                <span class="specs-value">Pure Sine Wave</span>
+              </div>
+              <div class="specs-item">
+                <span class="specs-label">Efficiency</span>
+                <span class="specs-value">98.5%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="specs-card reveal" data-delay="100">
+            <h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Protection Features
+            </h3>
+            <div class="features-list">
+              <div class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Overload protection with automatic recovery</span>
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Short circuit protection</span>
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Over-temperature protection</span>
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Battery over-charge/discharge protection</span>
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Lightning and surge protection</span>
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Anti-islanding protection</span>
+              </div>
+              <div class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Ground fault monitoring</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="specs-card reveal" data-delay="200">
+            <h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/></svg>
+              Solar Input
+            </h3>
+            <div class="specs-list">
+              <div class="specs-item">
+                <span class="specs-label">Max PV Input Power</span>
+                <span class="specs-value">8500W</span>
+              </div>
+              <div class="specs-item">
+                <span class="specs-label">MPPT Voltage Range</span>
+                <span class="specs-value">120-450V DC</span>
+              </div>
+              <div class="specs-item">
+                <span class="specs-label">Max PV Voltage</span>
+                <span class="specs-value">500V DC</span>
+              </div>
+              <div class="specs-item">
+                <span class="specs-label">MPPT Trackers</span>
+                <span class="specs-value">2</span>
+              </div>
+              <div class="specs-item">
+                <span class="specs-label">Max Input Current</span>
+                <span class="specs-value">18A per tracker</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="specs-card reveal" data-delay="300">
+            <h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg>
+              General
+            </h3>
+            <div class="specs-list">
+              <div class="specs-item">
+                <span class="specs-label">Dimensions</span>
+                <span class="specs-value">520 x 450 x 190 mm</span>
+              </div>
+              <div class="specs-item">
+                <span class="specs-label">Weight</span>
+                <span class="specs-value">28 kg</span>
+              </div>
+              <div class="specs-item">
+                <span class="specs-label">Operating Temperature</span>
+                <span class="specs-value">-10°C to 50°C</span>
+              </div>
+              <div class="specs-item">
+                <span class="specs-label">Cooling</span>
+                <span class="specs-value">Smart Fan Cooling</span>
+              </div>
+              <div class="specs-item">
+                <span class="specs-label">Communication</span>
+                <span class="specs-value">WiFi, RS485, CAN</span>
+              </div>
+              <div class="specs-item">
+                <span class="specs-label">Display</span>
+                <span class="specs-value">LCD + LED indicators</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="related-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="reveal">Related <span class="text-gradient">Products</span></h2>
+          <p class="reveal">You might also be interested in these products</p>
+        </div>
+
+        <div class="related-grid">
+          <article class="product-card reveal" data-delay="0">
+            <div class="product-image">
+              <span class="product-category-badge">Inverter</span>
+              <img src="images/products/inverter-4kw.png" alt="S.O Series 4 KW">
+            </div>
+            <div class="product-content">
+              <h3 class="product-title">S.O Series 4 KW</h3>
+              <a href="product-detail.html?id=2" class="product-link">
+                View Details
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="product-card reveal" data-delay="100">
+            <div class="product-image">
+              <span class="product-category-badge">Battery</span>
+              <img src="images/products/battery-280ah.png" alt="S.O Lithium 51.2V 280Ah">
+            </div>
+            <div class="product-content">
+              <h3 class="product-title">S.O Lithium 51.2V 280Ah</h3>
+              <a href="product-detail.html?id=5" class="product-link">
+                View Details
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="product-card reveal" data-delay="200">
+            <div class="product-image">
+              <span class="product-category-badge">Solar Panel</span>
+              <img src="images/products/solar-panel.png" alt="S.O Solar Panel">
+            </div>
+            <div class="product-content">
+              <h3 class="product-title">S.O Solar Panel 585-625W</h3>
+              <a href="product-detail.html?id=6" class="product-link">
+                View Details
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inquiry Form -->
+    <section class="inquiry-section">
+      <div class="container">
+        <div class="inquiry-wrapper reveal">
+          <h3>Request a Quote</h3>
+          <p>Fill out the form below and we'll get back to you with pricing and availability.</p>
+
+          <form id="inquiryForm">
+            <div class="form-group">
+              <label for="name" class="form-label">Full Name *</label>
+              <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address *</label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="phone" class="form-label">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" class="form-input" placeholder="03XX-XXXXXXX" required>
+            </div>
+            <div class="form-group">
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your requirements..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+              Send Inquiry
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </div>
+            <span>FM's Power</span>
+          </a>
+          <p>Premium solar inverters, lithium batteries, and solar panels. Save energy, build a better future.</p>
+          <div class="footer-social">
+            <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Products</h4>
+          <ul class="footer-links">
+            <li><a href="products.html?category=inverters">Solar Inverters</a></li>
+            <li><a href="products.html?category=batteries">Lithium Batteries</a></li>
+            <li><a href="products.html?category=panels">Solar Panels</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="tel:03222550299">0322-2550299</a></li>
+            <li><a href="mailto:thefmstrading@gmail.com">thefmstrading@gmail.com</a></li>
+            <li><a href="https://wa.me/923222550299">WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2024 FM's Power. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/923222550299" target="_blank" class="whatsapp-float"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+  <button class="back-to-top" id="backToTop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg></button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
