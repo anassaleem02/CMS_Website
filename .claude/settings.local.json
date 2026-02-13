@@ -17,7 +17,10 @@
       "Bash(for file in contact.html product-detail.html)",
       "Bash(do sed -i 's|\\\\.logo-icon svg { width: 24px; height: 24px; }|.logo-icon svg { width: 24px; height: 24px; }\\\\n\\\\n    .logo-image {\\\\n      height: 50px;\\\\n      width: auto;\\\\n      object-fit: contain;\\\\n    }|g' \"$file\")",
       "Bash(grep:*)",
-      "Bash(for i in 1 2 3 4 5)"
+      "Bash(for i in 1 2 3 4 5)",
+      "Bash(dir:*)",
+      "Bash(findstr:*)",
+      "Bash(wc:*)"
     ]
   }
 }

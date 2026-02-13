@@ -3,7 +3,11 @@
 ## Project Overview
 Build a **premium, modern, full-stack CMS website** for a solar panel and battery business. This is a production-grade application with dynamic content management for ALL sections, featuring cutting-edge UI/UX design that significantly exceeds the reference site in visual appeal, interactivity, and user experience.
 
+**Company Name:** FM's Power / FM's Trading
 **Reference Site:** https://www.thefmspower.com (use as baseline, but CREATE SOMETHING FAR MORE IMPRESSIVE)
+**Location:** Karachi, Pakistan
+**Contact:** +92 322 2550299, thefmstrading@gmail.com
+**Address:** Shop no G31-G50, Ground Floor Al-Najeebi Electronic Bazar, Agha Khan road 3, Near Star city Mall, Saddar, Karachi
 
 ---
 
@@ -55,8 +59,219 @@ If you have any changes or feedback, please specify them now."
 ## 📋 PHASE-BY-PHASE BREAKDOWN
 
 ### **PHASE 1: COMPLETE STATIC WEBSITE WITH STUNNING UI** 🎨
-**Duration:** 2-3 days  
+**Duration:** 2-3 days
 **Goal:** Build a COMPLETE, FULLY FUNCTIONAL static website with ALL pages, sections, and content using HTML/CSS/JavaScript ONLY (no frameworks). This should be a pixel-perfect, production-ready website with REAL DATA from the reference site, but with a FAR SUPERIOR modern design.
+
+---
+
+## 🎨 EXACT DESIGN SPECIFICATION (CRITICAL - FOLLOW PRECISELY)
+
+### Color Palette (CSS Custom Properties)
+```css
+/* Primary - Solar Blue (FM's Power Brand) */
+--color-primary-50: #E6F4FF;
+--color-primary-100: #BAE0FF;
+--color-primary-200: #91CAFF;
+--color-primary-300: #69B1FF;
+--color-primary-400: #4096FF;
+--color-primary-500: #1677FF;  /* Main Brand Color */
+--color-primary-600: #0958D9;
+--color-primary-700: #003EB3;
+--color-primary-800: #002C8C;
+--color-primary-900: #001D66;
+
+/* Accent - Cyan Blue */
+--color-accent-50: #E6FCFF;
+--color-accent-100: #B5F5FF;
+--color-accent-400: #4AB5D8;
+--color-accent-500: #36A3BF;
+
+/* Neutral - Carbon (Dark Theme Base) */
+--color-neutral-50: #FAFAFA;
+--color-neutral-100: #F4F4F5;
+--color-neutral-200: #E4E4E7;
+--color-neutral-400: #A1A1AA;
+--color-neutral-500: #71717A;
+--color-neutral-600: #52525B;
+--color-neutral-700: #3F3F46;
+--color-neutral-800: #27272A;
+--color-neutral-900: #18181B;
+--color-neutral-950: #09090B;
+
+/* Semantic Colors */
+--color-success: #22C55E;
+--color-warning: #EAB308;
+--color-error: #EF4444;
+--color-info: #3B82F6;
+--color-gold: #FAAD14;  /* For featured badges */
+
+/* Dark Theme Backgrounds */
+--bg-primary: #0A0A0B;
+--bg-secondary: #111113;
+--bg-tertiary: #1A1A1D;
+--bg-elevated: #27272A;
+
+/* Dark Theme Text */
+--text-primary: #FAFAFA;
+--text-secondary: #A1A1AA;
+--text-tertiary: #71717A;
+--text-muted: #52525B;
+
+/* Border Colors */
+--border-primary: #27272A;
+--border-secondary: #3F3F46;
+--border-focus: #1677FF;
+```
+
+### Gradients (MUST USE)
+```css
+--gradient-primary: linear-gradient(135deg, #1677FF 0%, #0958D9 50%, #003EB3 100%);
+--gradient-primary-hover: linear-gradient(135deg, #4096FF 0%, #1677FF 50%, #0958D9 100%);
+--gradient-gold: linear-gradient(135deg, #FAAD14 0%, #D98A0B 100%);
+--gradient-dark: linear-gradient(180deg, #0A0A0B 0%, #111113 50%, #1A1A1D 100%);
+--gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+--gradient-mesh: radial-gradient(at 40% 20%, rgba(22, 119, 255, 0.15) 0px, transparent 50%),
+                 radial-gradient(at 80% 0%, rgba(74, 181, 216, 0.12) 0px, transparent 50%),
+                 radial-gradient(at 0% 50%, rgba(22, 119, 255, 0.1) 0px, transparent 50%);
+```
+
+### Typography (Google Fonts)
+```css
+/* Font Families - MUST USE THESE EXACT FONTS */
+--font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;  /* Headings */
+--font-body: 'Inter', system-ui, -apple-system, sans-serif;       /* Body text */
+--font-mono: 'JetBrains Mono', 'Fira Code', monospace;            /* Technical/specs */
+
+/* Import from Google Fonts: */
+/* Inter:wght@300;400;500;600;700 */
+/* Space+Grotesk:wght@400;500;600;700 */
+/* JetBrains+Mono:wght@400;500 */
+
+/* Font Sizes */
+--text-xs: 0.75rem;   /* 12px */
+--text-sm: 0.875rem;  /* 14px */
+--text-base: 1rem;    /* 16px */
+--text-lg: 1.125rem;  /* 18px */
+--text-xl: 1.25rem;   /* 20px */
+--text-2xl: 1.5rem;   /* 24px */
+--text-3xl: 1.875rem; /* 30px */
+--text-4xl: 2.25rem;  /* 36px */
+--text-5xl: 3rem;     /* 48px */
+--text-6xl: 3.75rem;  /* 60px */
+--text-7xl: 4.5rem;   /* 72px */
+```
+
+### Spacing System
+```css
+--space-1: 0.25rem;   /* 4px */
+--space-2: 0.5rem;    /* 8px */
+--space-3: 0.75rem;   /* 12px */
+--space-4: 1rem;      /* 16px */
+--space-5: 1.25rem;   /* 20px */
+--space-6: 1.5rem;    /* 24px */
+--space-8: 2rem;      /* 32px */
+--space-10: 2.5rem;   /* 40px */
+--space-12: 3rem;     /* 48px */
+--space-16: 4rem;     /* 64px */
+--space-20: 5rem;     /* 80px */
+--space-24: 6rem;     /* 96px */
+```
+
+### Border Radius
+```css
+--radius-sm: 0.25rem;   /* 4px */
+--radius-md: 0.5rem;    /* 8px */
+--radius-lg: 0.75rem;   /* 12px */
+--radius-xl: 1rem;      /* 16px */
+--radius-2xl: 1.5rem;   /* 24px */
+--radius-3xl: 2rem;     /* 32px */
+--radius-full: 9999px;  /* Fully rounded */
+```
+
+### Shadows
+```css
+--shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+--shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+--shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+--shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+--shadow-glow-sm: 0 0 20px rgba(22, 119, 255, 0.2);
+--shadow-glow-md: 0 0 30px rgba(22, 119, 255, 0.3);
+--shadow-card: 0 4px 20px rgba(0, 0, 0, 0.4);
+--shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 40px rgba(22, 119, 255, 0.15);
+```
+
+### Glassmorphism Effects
+```css
+--glass-bg: rgba(255, 255, 255, 0.05);
+--glass-bg-hover: rgba(255, 255, 255, 0.08);
+--glass-border: rgba(255, 255, 255, 0.1);
+--glass-border-hover: rgba(255, 255, 255, 0.15);
+--glass-blur: blur(12px);
+--glass-blur-lg: blur(20px);
+```
+
+### Animation Timing
+```css
+--duration-fast: 150ms;
+--duration-normal: 300ms;
+--duration-slow: 500ms;
+--ease-out: cubic-bezier(0, 0, 0.2, 1);
+--ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+--ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+```
+
+---
+
+## 🌓 LIGHT/DARK THEME TOGGLE (REQUIRED FEATURE)
+
+### Theme Toggle Button
+- Located in the navigation bar (desktop) next to WhatsApp CTA button
+- 40x40px button with glassmorphism background
+- Moon icon for dark mode, Sun icon for light mode
+- Smooth 15deg rotation animation on hover
+- Theme preference saved to localStorage
+- Respects user's saved preference on page load
+
+### Light Theme CSS Variables (Apply via [data-theme="light"])
+```css
+[data-theme="light"] {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8FAFC;
+  --bg-tertiary: #F1F5F9;
+  --bg-elevated: #FFFFFF;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-tertiary: #64748B;
+  --text-muted: #94A3B8;
+  --border-primary: #E2E8F0;
+  --border-secondary: #CBD5E1;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-bg-hover: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+```
+
+### Theme Toggle JavaScript
+```javascript
+function initThemeToggle() {
+  const themeToggle = document.getElementById('themeToggle');
+  const htmlElement = document.documentElement;
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  htmlElement.setAttribute('data-theme', savedTheme);
+
+  themeToggle.addEventListener('click', function() {
+    const currentTheme = htmlElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    htmlElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+}
+```
+
+---
+
+## 📄 PAGE STRUCTURE SPECIFICATIONS
 
 #### 🎯 CRITICAL REQUIREMENTS FOR PHASE 1:
 
@@ -163,31 +378,99 @@ Build a FULL multi-page static website with the following structure:
 ### 3. **Homepage (index.html)** - MUST INCLUDE ALL SECTIONS:
 
 #### A. **Navigation Bar**
-- Logo (create a modern logo or use company name stylized)
-- Menu items: Home | Products | About | Contact
-- WhatsApp quick contact button (floating or in nav)
-- Mobile hamburger menu (animated)
-- Smooth scroll to sections
-- Sticky on scroll with backdrop blur effect
+**Desktop Navigation (1024px+):**
+- Logo: FM's Power logo image (height: 50px)
+- Menu items: Home | Products | About | Contact (--text-sm, --font-medium)
+- Nav link underline animation on hover (gradient-primary, width: 0 to 100%)
+- WhatsApp CTA button (gradient-primary, rounded-full, with WhatsApp icon)
+- **Theme Toggle Button** (40x40px, glassmorphism, moon/sun icons)
+- Sticky header on scroll with:
+  - Background: rgba(10, 10, 11, 0.85) with backdrop-filter: blur(20px)
+  - Border-bottom: 1px solid rgba(255, 255, 255, 0.1)
+  - Reduced padding: var(--space-3)
+
+**Mobile Navigation (under 1024px):**
+- Hamburger menu (3 lines, animated to X on open)
+- Full-screen overlay menu with slide-in animation
+- Large nav links (--text-2xl)
+- WhatsApp and Call buttons at bottom
+- Close on link click or Escape key
 
 #### B. **Hero Section** ⚡
-- **Full-screen hero** with stunning background
-- Animated gradient background OR parallax image
-- Headline: "SAVE ENERGY TO BUILD A BETTER FUTURE" (or better)
-- Subheadline (compelling value proposition)
-- Animated CTA button (with ripple effect)
-- Scroll indicator (animated arrow)
-- **Particles animation** or subtle background motion (optional but impressive)
-- Statistics counter (e.g., "500+ Happy Customers", "10MW+ Generated")
+- **Full-screen hero** (min-height: 100vh) with parallax background image
+- Background image: Solar panels installation photo (use images/hero/solar_img.jpg)
+- Gradient overlay: rgba(10, 10, 11, 0.88) to rgba(22, 119, 255, 0.25)
+- Floating orb animations (blurred circles with primary/accent colors)
+
+**Hero Content:**
+- Headline: "Power Your Future with Solar Energy" (font-size: 4.5rem on desktop, 2.25rem mobile)
+- Subheadline: "Premium solar inverters, lithium batteries & panels with 5-year warranty. Save energy, reduce bills, and embrace sustainable living."
+- Two CTA Buttons:
+  1. "Explore Products" (gradient-primary background, links to products.html)
+  2. "Get Quote" (transparent with border, links to contact.html)
+
+**Statistics Row (4 items):**
+1. "500+" - Happy Customers
+2. "10MW+" - Power Generated
+3. "5 Years" - Warranty
+4. "98.5%" - Efficiency
+
+**Stats Animation:**
+- Counter animation on scroll into view
+- Numbers count up from 0 to target
+- Duration: 2 seconds
+- Use Intersection Observer API
 
 #### C. **Products Showcase Section** 🔋
-Display 6 products from reference site:
-1. S.O Series 1.6 KW Inverter
-2. S.O Series 4 KW Inverter
-3. S.O Series 6.2 KW Inverter
-4. S.O Lithium Battery 51.2 105ah
-5. S.O Lithium Battery 51.2 280/314
-6. S.O Solar Panel (585-625W)
+Display 6 products with EXACT specifications:
+
+**1. S.O Series 1.6 KW Inverter**
+- Category: Inverter
+- Power Output: 1600W
+- Voltage: 12V
+- Wave Form: Pure Sine Wave
+- Warranty: 5 Years
+- Featured: Yes
+
+**2. S.O Series 4 KW Inverter**
+- Category: Inverter
+- Power Output: 4000W
+- Voltage: 48V
+- Wave Form: Pure Sine Wave
+- Warranty: 5 Years
+- Featured: No
+
+**3. S.O Series 6.2 KW Inverter**
+- Category: Inverter
+- Power Output: 6200W
+- Voltage: 48V
+- Wave Form: Pure Sine Wave
+- Warranty: 5 Years
+- Featured: Yes
+
+**4. S.O Lithium Battery 51.2V 105Ah**
+- Category: Battery
+- Capacity: 105Ah
+- Voltage: 51.2V
+- Chemistry: LiFePO4
+- Warranty: 5 Years
+- Featured: No
+
+**5. S.O Lithium Battery 51.2V 280Ah**
+- Category: Battery
+- Capacity: 280Ah
+- Voltage: 51.2V
+- Chemistry: LiFePO4
+- Warranty: 5 Years
+- Featured: Yes
+
+**6. S.O Mono Solar Panel 585W**
+- Category: Solar Panel
+- Power: 585W
+- Type: Mono PERC
+- Efficiency: 21.5%
+- Warranty: 25 Years
+- Featured: No
 
 **Each product card must have:**
 - High-quality product image (download from reference or find better)
@@ -221,12 +504,37 @@ Create 6 feature cards (use reference site features + add more):
 - Smooth entrance animation on scroll
 
 #### E. **Testimonials Carousel Section** 💬
-Create 5 realistic customer testimonials:
-- Customer name (use realistic Pakistani names since company is in Karachi)
-- Customer title/company (e.g., "Homeowner", "Factory Owner")
-- 5-star rating (animated on scroll)
-- Review text (150-200 words)
-- Customer photo (use AI-generated or stock photos)
+Create 5 EXACT testimonials with these details:
+
+**Profile Images (Use these exact URLs):**
+- Customer 1: https://randomuser.me/api/portraits/men/32.jpg
+- Customer 2: https://randomuser.me/api/portraits/men/45.jpg
+- Customer 3: https://randomuser.me/api/portraits/men/67.jpg
+- Customer 4: https://randomuser.me/api/portraits/men/22.jpg
+- Customer 5: https://randomuser.me/api/portraits/men/75.jpg
+
+**1. Ahmed Khan - Homeowner, DHA Karachi**
+"Switching to solar was the best decision for our home. The system handles all our appliances including AC effortlessly. FM's Power team was professional from consultation to installation. We've seen significant reduction in electricity bills, and the 5-year warranty gives us complete peace of mind."
+
+**2. Muhammad Farooq - Factory Owner, SITE Area**
+"Our manufacturing unit needed reliable power, and FM's Power delivered beyond expectations. The 6.2KW inverter system handles our heavy machinery effortlessly. The installation team was professional, and the after-sales support has been exceptional. Highly recommended for industrial applications!"
+
+**3. Farhan Rizvi - Homeowner, Gulshan-e-Iqbal**
+"Living in Karachi with frequent load shedding, the FM's Power system has been a game-changer. The lithium battery backup keeps our home running smoothly during outages. The team explained everything clearly and completed installation in just one day. Excellent service!"
+
+**4. Dr. Hassan Ali - Medical Clinic Owner, Clifton**
+"A medical clinic cannot afford power interruptions. FM's Power understood our requirements perfectly and installed a system that handles our medical equipment and air conditioning seamlessly. The pure sine wave output keeps sensitive equipment safe. Outstanding investment!"
+
+**5. Imran Sheikh - Shop Owner, Saddar**
+"I run an electronics shop and needed reliable power backup. FM's Power provided the perfect solution with their hybrid inverter system. The 5-year warranty gives peace of mind, and their team is always just a phone call away for any queries. Very satisfied with the purchase!"
+
+**Carousel Features:**
+- Auto-play every 5 seconds
+- Pause on hover
+- Previous/Next arrow buttons with glassmorphism style
+- Dot indicators (active dot highlighted with primary color)
+- Swipe support on mobile
+- Smooth CSS transitions
 
 **Carousel features:**
 - Auto-play (5 second intervals)
@@ -279,13 +587,39 @@ List 4-6 services (from reference or create):
 - Business hours
 
 #### I. **Footer** 🔗
-- Company logo
-- Quick links (Home, Products, About, Contact)
-- Product categories
-- Social media icons (Facebook, Instagram, LinkedIn, YouTube)
-- Newsletter signup (optional)
-- Copyright text
-- Privacy Policy | Terms of Service links
+**4-Column Grid Layout:**
+
+**Column 1 - Company Info:**
+- FM's Power logo
+- Description: "Premium solar energy solutions for homes and businesses. Quality products, expert installation, and reliable after-sales support."
+- Social icons: Facebook, Instagram, YouTube (with hover color transitions)
+
+**Column 2 - Quick Links:**
+- Home
+- Products
+- About Us
+- Contact
+
+**Column 3 - Products:**
+- Solar Inverters
+- Lithium Batteries
+- Solar Panels
+- Accessories
+
+**Column 4 - Contact:**
+- Phone: 0322-2550299
+- Email: thefmstrading@gmail.com
+- Address: Shop no G31-G50, Ground Floor Al-Najeebi Electronic Bazar, Saddar, Karachi
+- WhatsApp: Same as phone
+
+**Footer Bottom:**
+- Copyright: "© 2024 FM's Power. All rights reserved."
+- Links: Privacy Policy | Terms of Service
+
+**Footer Styling:**
+- Background: --bg-secondary (dark) or #0F172A (in light mode)
+- Border-top: 1px solid --border-primary
+- Padding: var(--space-16) 0
 
 ---
 

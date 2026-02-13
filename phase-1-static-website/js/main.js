@@ -5,6 +5,7 @@
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
   // Initialize all modules
+  initThemeToggle();
   initPageLoader();
   initHeader();
   initMobileNav();
@@ -18,6 +19,34 @@ document.addEventListener('DOMContentLoaded', function() {
   initGallery();
   initAccordion();
 });
+
+/* ==========================================
+   THEME TOGGLE
+   ========================================== */
+function initThemeToggle() {
+  const themeToggle = document.getElementById('themeToggle');
+  const htmlElement = document.documentElement;
+
+  // Check for saved theme preference or default to dark
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  htmlElement.setAttribute('data-theme', savedTheme);
+
+  if (!themeToggle) return;
+
+  themeToggle.addEventListener('click', function() {
+    const currentTheme = htmlElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    htmlElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+
+    // Add a subtle animation to the toggle button
+    themeToggle.style.transform = 'scale(0.9)';
+    setTimeout(function() {
+      themeToggle.style.transform = '';
+    }, 150);
+  });
+}
 
 /* ==========================================
    PAGE LOADER
