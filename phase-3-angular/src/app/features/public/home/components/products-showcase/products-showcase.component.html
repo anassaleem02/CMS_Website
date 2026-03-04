@@ -25,17 +25,10 @@
     <div class="grid-3" *ngIf="!loading">
       <div class="product-card glass-card" *ngFor="let product of products">
 
-        <!-- Badges Row -->
-        <div class="product-badges">
-          <span class="badge badge-primary">{{ getCategoryLabel(product.category) }}</span>
-          <span class="badge badge-accent" *ngIf="product.badgeLabel">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            {{ product.badgeLabel }}
-          </span>
-        </div>
-
-        <!-- Image -->
+        <!-- Image with overlaid badges -->
         <div class="product-image">
+          <span class="badge-featured" *ngIf="product.badgeLabel">{{ product.badgeLabel }}</span>
+          <span class="badge-category">{{ getCategoryLabel(product.category) }}</span>
           <img
             *ngIf="product.primaryImage"
             [src]="product.primaryImage.imageUrl"

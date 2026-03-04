@@ -7,6 +7,10 @@
 </main>
 <app-footer></app-footer>
 
+<button class="back-to-top" [class.visible]="showBackToTop" (click)="scrollToTop()" aria-label="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 <a href="https://wa.me/923222550299?text=Hello%2C%20I%27m%20interested%20in%20solar%20products"
    target="_blank"
    class="whatsapp-float"

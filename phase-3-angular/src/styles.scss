@@ -271,6 +271,21 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--font-display); font-weight: 700; line-hei
   border-radius: var(--radius-md);
 }
 
+.back-to-top {
+  position: fixed; bottom: 100px; right: var(--space-8);
+  z-index: 999; width: 44px; height: 44px;
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full); color: var(--text-primary);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-md);
+  opacity: 0; pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity var(--duration-normal), transform var(--duration-normal);
+  &.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  &:hover { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+}
+
 .whatsapp-float {
   position: fixed; bottom: var(--space-8); right: var(--space-8);
   z-index: 1000; width: 56px; height: 56px;

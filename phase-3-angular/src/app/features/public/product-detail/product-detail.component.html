@@ -34,27 +34,27 @@
       <div class="detail-grid">
         <!-- Image Gallery -->
         <div class="gallery">
-          <div class="main-image glass-card">
-            <div class="image-badges">
-              <span class="badge badge-primary">{{ getCategoryLabel() }}</span>
-              <span class="badge badge-accent" *ngIf="product.isFeatured">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                Best Seller
-              </span>
-            </div>
-            <img
-              *ngIf="selectedImage"
-              [src]="selectedImage.imageUrl"
-              [alt]="selectedImage.altText || product.name"
-              class="main-img"
-              onerror="this.style.display='none'"
-            />
-            <div class="no-image-placeholder" *ngIf="!selectedImage">
-              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.2"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          <div class="gallery-main">
+            <span class="badge-featured" *ngIf="product.isFeatured">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Best Seller
+            </span>
+            <span class="badge-category">{{ getCategoryLabel() }}</span>
+            <div class="main-image glass-card" [class.zoomable]="!!selectedImage" (click)="openZoom()">
+              <img
+                *ngIf="selectedImage"
+                [src]="selectedImage.imageUrl"
+                [alt]="selectedImage.altText || product.name"
+                class="main-img"
+                onerror="this.style.display='none'"
+              />
+              <div class="no-image-placeholder" *ngIf="!selectedImage">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.2"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              </div>
             </div>
           </div>
-          <!-- Thumbnails -->
-          <div class="thumbnails" *ngIf="product.images.length > 1">
+          <!-- Thumbnails: show all images from database -->
+          <div class="thumbnails" *ngIf="product.images.length">
             <div class="thumb glass-card"
                  *ngFor="let img of product.images"
                  [class.active]="selectedImage?.id === img.id"
@@ -200,4 +200,15 @@
       </div>
     </div>
   </section>
+</div>
+
+<!-- Zoom Lightbox -->
+<div class="lightbox-overlay" *ngIf="zoomOpen" (click)="closeZoom()">
+  <button class="lightbox-close" (click)="closeZoom()">✕</button>
+  <img
+    [src]="selectedImage?.imageUrl"
+    [alt]="selectedImage?.altText || product?.name"
+    class="lightbox-img"
+    (click)="$event.stopPropagation()"
+  />
 </div>

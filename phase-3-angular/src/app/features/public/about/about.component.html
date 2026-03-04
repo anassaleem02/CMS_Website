@@ -52,17 +52,55 @@
     </div>
   </section>
 
-  <!-- Values -->
+  <!-- Mission & Values -->
   <section class="section values-section">
     <div class="container">
       <div class="section-header">
         <div class="section-badge">Our Values</div>
-        <h2>What We <span class="gradient-text">Stand For</span></h2>
+        <h2>Our <span class="gradient-text">Mission & Values</span></h2>
+        <p>We are driven by a commitment to quality, innovation, and customer satisfaction.</p>
       </div>
       <div class="grid-2">
         <div class="value-card glass-card" *ngFor="let value of values">
           <h3>{{ value.title }}</h3>
           <p>{{ value.desc }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="section why-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Why Us</div>
+        <h2>Why Choose <span class="gradient-gold">FM's Power</span></h2>
+        <p>Here's what sets us apart from the competition.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card glass-card" *ngFor="let reason of whyUs">
+          <div class="why-number">{{ reason.number }}</div>
+          <div class="why-content">
+            <h3>{{ reason.title }}</h3>
+            <p>{{ reason.desc }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="section certs-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Standards</div>
+        <h2>Certifications & <span class="gradient-text">Standards</span></h2>
+        <p>Our products meet international quality and safety standards.</p>
+      </div>
+      <div class="certs-grid">
+        <div class="cert-badge glass-card" *ngFor="let cert of certifications">
+          <div class="cert-icon" [innerHTML]="cert.icon"></div>
+          <span>{{ cert.label }}</span>
         </div>
       </div>
     </div>

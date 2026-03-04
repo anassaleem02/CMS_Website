@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product, ProductImage } from '../../../core/models/product.model';
@@ -21,6 +21,7 @@ export class ProductDetailComponent implements OnInit {
   inquiryForm!: FormGroup;
   submittingInquiry = false;
   inquirySuccess = false;
+  zoomOpen = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -62,6 +63,12 @@ export class ProductDetailComponent implements OnInit {
   selectImage(image: ProductImage): void {
     this.selectedImage = image;
   }
+
+  openZoom(): void { if (this.selectedImage) this.zoomOpen = true; }
+  closeZoom(): void { this.zoomOpen = false; }
+
+  @HostListener('document:keydown.escape')
+  onEsc(): void { this.zoomOpen = false; }
 
   getCategoryLabel(): string {
     if (!this.product) return '';

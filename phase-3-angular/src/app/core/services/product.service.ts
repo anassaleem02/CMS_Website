@@ -76,6 +76,9 @@ export class ProductService {
   deleteImage(productId: number, imageId: number): Observable<void> {
     return this.http.delete<void>(`${this.base}/${productId}/images/${imageId}`);
   }
+  setPrimaryImage(productId: number, imageId: number): Observable<any> {
+    return this.http.put(`${this.base}/${productId}/images/${imageId}/primary`, {});
+  }
   addSpec(productId: number, dto: { key: string; value: string; displayOrder: number }): Observable<any> {
     return this.http.post(`${this.base}/${productId}/specs`, dto);
   }

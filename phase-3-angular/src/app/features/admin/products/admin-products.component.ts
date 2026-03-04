@@ -1,7 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ProductService } from '../../../core/services/product.service';
-import { Product, ProductCategory, CreateProductDto } from '../../../core/models/product.model';
+import { Product, ProductCategory, CreateProductDto, ProductImage } from '../../../core/models/product.model';
 import { NotificationService } from '../../../core/services/notification.service';
+import { MediaService } from '../../../core/services/media.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
@@ -37,9 +38,17 @@ export class AdminProductsComponent implements OnInit {
   saving = false;
   ProductCategory = ProductCategory;
 
+  // Image management
+  productImages: ProductImage[] = [];
+  newImageUrl = '';
+  newImageAlt = '';
+  addingImage = false;
+  uploadingImage = false;
+
   constructor(
     private productService: ProductService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private mediaService: MediaService
   ) {}
 
   ngOnInit(): void { this.loadProducts(); }
@@ -79,10 +88,13 @@ export class AdminProductsComponent implements OnInit {
   openEdit(product: Product): void {
     this.editingProduct = product;
     this.form = { name: product.name, shortDescription: product.shortDescription, description: product.description || '', category: product.category, isFeatured: product.isFeatured, isActive: product.isActive, displayOrder: product.displayOrder };
+    this.productImages = [...(product.images || [])];
+    this.newImageUrl = '';
+    this.newImageAlt = '';
     this.showForm = true;
   }
 
-  closeForm(): void { this.showForm = false; this.editingProduct = null; }
+  closeForm(): void { this.showForm = false; this.editingProduct = null; this.productImages = []; }
 
   saveProduct(): void {
     if (!this.form.name.trim()) { this.notificationService.error('Product name is required.'); return; }
@@ -91,11 +103,20 @@ export class AdminProductsComponent implements OnInit {
       ? this.productService.update(this.editingProduct.id, this.form)
       : this.productService.create(this.form);
     op.subscribe({
-      next: () => {
-        this.notificationService.success(this.editingProduct ? 'Product updated!' : 'Product created!');
-        this.closeForm();
-        this.loadProducts();
+      next: (saved: Product) => {
         this.saving = false;
+        if (this.editingProduct) {
+          this.notificationService.success('Product updated!');
+          this.closeForm();
+          this.loadProducts();
+        } else {
+          // After creating, stay open in edit mode so images can be added immediately
+          this.notificationService.success('Product created! You can now add images below.');
+          this.products.push(saved);
+          this.applyFilters();
+          this.editingProduct = saved;
+          this.productImages = [];
+        }
       },
       error: () => { this.notificationService.error('Failed to save product.'); this.saving = false; }
     });
@@ -154,5 +175,90 @@ export class AdminProductsComponent implements OnInit {
 
   getCategoryLabel(cat: ProductCategory): string {
     return ['', 'Inverter', 'Battery', 'Solar Panel', 'Accessory'][cat] || 'Unknown';
+  }
+
+  // --- Image management ---
+  addImageByUrl(): void {
+    if (!this.newImageUrl.trim() || !this.editingProduct) return;
+    this.addingImage = true;
+    const isPrimary = this.productImages.length === 0;
+    this.productService.addImage(this.editingProduct.id, {
+      imageUrl: this.newImageUrl.trim(),
+      altText: this.newImageAlt.trim(),
+      isPrimary,
+      displayOrder: this.productImages.length
+    }).subscribe({
+      next: (img: ProductImage) => {
+        this.productImages.push(img);
+        if (isPrimary && this.editingProduct) {
+          this.editingProduct.primaryImage = img;
+        }
+        this.newImageUrl = '';
+        this.newImageAlt = '';
+        this.addingImage = false;
+        this.notificationService.success('Image added.');
+        this.loadProducts();
+      },
+      error: () => { this.notificationService.error('Failed to add image.'); this.addingImage = false; }
+    });
+  }
+
+  handleFileUpload(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (!input.files?.length || !this.editingProduct) return;
+    const file = input.files[0];
+    this.uploadingImage = true;
+    this.mediaService.upload(file, 'product').subscribe({
+      next: (media) => {
+        const isPrimary = this.productImages.length === 0;
+        this.productService.addImage(this.editingProduct!.id, {
+          imageUrl: media.fileUrl,
+          altText: file.name.replace(/\.[^.]+$/, ''),
+          isPrimary,
+          displayOrder: this.productImages.length
+        }).subscribe({
+          next: (img: ProductImage) => {
+            this.productImages.push(img);
+            if (isPrimary && this.editingProduct) {
+              this.editingProduct.primaryImage = img;
+            }
+            this.uploadingImage = false;
+            this.notificationService.success('Image uploaded and added.');
+            this.loadProducts();
+          },
+          error: () => { this.notificationService.error('Failed to attach image.'); this.uploadingImage = false; }
+        });
+      },
+      error: () => { this.notificationService.error('Upload failed.'); this.uploadingImage = false; }
+    });
+    input.value = '';
+  }
+
+  setThumbnail(img: ProductImage): void {
+    if (!this.editingProduct || img.isPrimary) return;
+    this.productService.setPrimaryImage(this.editingProduct.id, img.id).subscribe({
+      next: () => {
+        this.productImages.forEach(i => i.isPrimary = i.id === img.id);
+        if (this.editingProduct) this.editingProduct.primaryImage = img;
+        this.notificationService.success('Thumbnail set.');
+        this.loadProducts();
+      },
+      error: () => this.notificationService.error('Failed to set thumbnail.')
+    });
+  }
+
+  removeImage(img: ProductImage): void {
+    if (!this.editingProduct) return;
+    this.productService.deleteImage(this.editingProduct.id, img.id).subscribe({
+      next: () => {
+        this.productImages = this.productImages.filter(i => i.id !== img.id);
+        if (this.editingProduct?.primaryImage?.id === img.id) {
+          this.editingProduct.primaryImage = this.productImages.find(i => i.isPrimary) || this.productImages[0];
+        }
+        this.notificationService.success('Image removed.');
+        this.loadProducts();
+      },
+      error: () => this.notificationService.error('Failed to remove image.')
+    });
   }
 }

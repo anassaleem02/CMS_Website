@@ -25,6 +25,35 @@ public static class DbInitializer
             await context.SaveChangesAsync();
         }
 
+        // Patch: add secondary images to products that only have 1 image
+        var productsWithImages = await context.Products.Include(p => p.Images).ToListAsync();
+        var secondaryImages = new Dictionary<string, (string url, string alt)>
+        {
+            { "so-series-1-6kw",    ("/images/products/inverter-1.6kw.png", "S.O Series 1.6 KW Inverter - Side View") },
+            { "so-series-4kw",      ("/images/products/inverter-4kw.png",   "S.O Series 4 KW Inverter - Side View") },
+            { "so-series-6-2kw",    ("/images/products/inverter-6.2kw.png", "S.O Series 6.2 KW Inverter - Side View") },
+            { "so-lithium-51v-105ah", ("/images/products/battery-105ah.png",  "S.O Lithium 105Ah Battery - Side View") },
+            { "so-lithium-51v-280ah", ("/images/products/battery-280ah.png",  "S.O Lithium 280Ah Battery - Side View") }
+        };
+        bool imagesPatchNeeded = false;
+        foreach (var product in productsWithImages)
+        {
+            if (secondaryImages.TryGetValue(product.Slug, out var imgInfo) && product.Images.Count == 1)
+            {
+                product.Images.Add(new ProductImage
+                {
+                    ImageUrl = imgInfo.url,
+                    AltText = imgInfo.alt,
+                    IsPrimary = false,
+                    DisplayOrder = 1,
+                    CreatedAt = DateTime.UtcNow,
+                    UpdatedAt = DateTime.UtcNow
+                });
+                imagesPatchNeeded = true;
+            }
+        }
+        if (imagesPatchNeeded) await context.SaveChangesAsync();
+
         // Seed only if DB is empty
         if (await context.Users.AnyAsync()) return;
 
@@ -175,7 +204,8 @@ public static class DbInitializer
                 UpdatedAt = DateTime.UtcNow,
                 Images = new List<ProductImage>
                 {
-                    new() { ImageUrl = "/images/products/fms1.6.jpeg", AltText = "S.O Series 1.6 KW Inverter", IsPrimary = true, DisplayOrder = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow }
+                    new() { ImageUrl = "/images/products/fms1.6.jpeg", AltText = "S.O Series 1.6 KW Inverter", IsPrimary = true, DisplayOrder = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+                    new() { ImageUrl = "/images/products/inverter-1.6kw.png", AltText = "S.O Series 1.6 KW Inverter - Side View", IsPrimary = false, DisplayOrder = 1, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow }
                 },
                 Specifications = new List<ProductSpecification>
                 {
@@ -200,7 +230,8 @@ public static class DbInitializer
                 UpdatedAt = DateTime.UtcNow,
                 Images = new List<ProductImage>
                 {
-                    new() { ImageUrl = "/images/products/fms4.jpeg", AltText = "S.O Series 4 KW Inverter", IsPrimary = true, DisplayOrder = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow }
+                    new() { ImageUrl = "/images/products/fms4.jpeg", AltText = "S.O Series 4 KW Inverter", IsPrimary = true, DisplayOrder = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+                    new() { ImageUrl = "/images/products/inverter-4kw.png", AltText = "S.O Series 4 KW Inverter - Side View", IsPrimary = false, DisplayOrder = 1, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow }
                 },
                 Specifications = new List<ProductSpecification>
                 {
@@ -225,7 +256,8 @@ public static class DbInitializer
                 UpdatedAt = DateTime.UtcNow,
                 Images = new List<ProductImage>
                 {
-                    new() { ImageUrl = "/images/products/fms4.jpeg", AltText = "S.O Series 6.2 KW Inverter", IsPrimary = true, DisplayOrder = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow }
+                    new() { ImageUrl = "/images/products/fms4.jpeg", AltText = "S.O Series 6.2 KW Inverter", IsPrimary = true, DisplayOrder = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+                    new() { ImageUrl = "/images/products/inverter-6.2kw.png", AltText = "S.O Series 6.2 KW Inverter - Side View", IsPrimary = false, DisplayOrder = 1, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow }
                 },
                 Specifications = new List<ProductSpecification>
                 {
@@ -249,7 +281,8 @@ public static class DbInitializer
                 UpdatedAt = DateTime.UtcNow,
                 Images = new List<ProductImage>
                 {
-                    new() { ImageUrl = "/images/products/lithium-battery-105ah.jpeg", AltText = "S.O Lithium Battery 51.2V 105Ah", IsPrimary = true, DisplayOrder = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow }
+                    new() { ImageUrl = "/images/products/lithium-battery-105ah.jpeg", AltText = "S.O Lithium Battery 51.2V 105Ah", IsPrimary = true, DisplayOrder = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+                    new() { ImageUrl = "/images/products/battery-105ah.png", AltText = "S.O Lithium Battery 105Ah - Side View", IsPrimary = false, DisplayOrder = 1, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow }
                 },
                 Specifications = new List<ProductSpecification>
                 {
@@ -276,7 +309,8 @@ public static class DbInitializer
                 UpdatedAt = DateTime.UtcNow,
                 Images = new List<ProductImage>
                 {
-                    new() { ImageUrl = "/images/products/lithium-280ah.jpeg", AltText = "S.O Lithium Battery 51.2V 280Ah", IsPrimary = true, DisplayOrder = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow }
+                    new() { ImageUrl = "/images/products/lithium-280ah.jpeg", AltText = "S.O Lithium Battery 51.2V 280Ah", IsPrimary = true, DisplayOrder = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+                    new() { ImageUrl = "/images/products/battery-280ah.png", AltText = "S.O Lithium Battery 280Ah - Side View", IsPrimary = false, DisplayOrder = 1, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow }
                 },
                 Specifications = new List<ProductSpecification>
                 {
