@@ -21,7 +21,7 @@ export interface BreadcrumbItem {
   `,
   styles: [`
     .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 0.8125rem; margin-bottom: 16px; }
-    .breadcrumb-link { color: var(--color-primary, #10B981); text-decoration: none; }
+    .breadcrumb-link { color: var(--color-primary, #1677FF); text-decoration: none; }
     .breadcrumb-link:hover { text-decoration: underline; }
     .breadcrumb-current { color: var(--text-secondary, #A1A1AA); }
     .breadcrumb-sep { color: var(--text-muted, #52525B); display: flex; align-items: center; }

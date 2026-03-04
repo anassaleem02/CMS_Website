@@ -83,7 +83,7 @@ export class AdminMediaComponent implements OnInit {
   }
 
   copyUrl(url: string): void {
-    navigator.clipboard.writeText(`http://localhost:5000${url}`).then(() => this.notificationService.success('URL copied to clipboard!'));
+    navigator.clipboard.writeText(`${url}`).then(() => this.notificationService.success('URL copied to clipboard!'));
   }
 
   confirmDelete(file: MediaFile): void { this.fileToDelete = file; this.deleteDialogVisible = true; }
@@ -109,3 +109,4 @@ export class AdminMediaComponent implements OnInit {
     return (bytes / 1048576).toFixed(1) + ' MB';
   }
 }
+

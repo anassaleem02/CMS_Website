@@ -20,7 +20,19 @@
       "Bash(for i in 1 2 3 4 5)",
       "Bash(dir:*)",
       "Bash(findstr:*)",
-      "Bash(wc:*)"
+      "Bash(wc:*)",
+      "Bash(xargs sed -i -e 's/rgba\\(16,185,129,/rgba\\(22,119,255,/g' -e 's/rgba\\(245,158,11,/rgba\\(74,181,216,/g' -e 's/#10B981/#1677FF/g' -e 's/#059669/#0958D9/g' -e 's/#047857/#003EB3/g' -e 's/#F59E0B/#4AB5D8/g' -e 's/#D97706/#36A3BF/g')",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\(''scripts'',{}\\), indent=2\\)\\)\")",
+      "Bash(__NEW_LINE_7a770128d5bb106c__ cat)",
+      "Bash(npm install)",
+      "Bash(src/app/features/public/home/components/products-showcase/products-showcase.component.html:*)",
+      "Bash(npx ng build)",
+      "Bash(# Check proxy config in Angular cat /d/anas.work/cms/cms/phase-3-angular/proxy.conf.json || ls /d/anas.work/cms/cms/phase-3-angular/*.json)",
+      "Bash(/d/anas.work/cms/cms/phase-3-angular/proxy.conf.json:*)",
+      "Bash(dotnet ef database update --project SolarCMS.Infrastructure --startup-project SolarCMS.API)",
+      "Bash(dotnet run --launch-profile http)",
+      "Bash(npx tsc --noEmit)",
+      "Bash(powershell.exe -Command \":*)"
     ]
   }
 }

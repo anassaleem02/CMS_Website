@@ -10,8 +10,8 @@ import { LoadingService } from '../../../core/services/loading.service';
     </div>
   `,
   styles: [`
-    .loading-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 10000; height: 3px; background: rgba(16,185,129,0.2); }
-    .loading-bar-progress { height: 100%; background: var(--color-primary, #10B981); animation: progress 1.5s ease-in-out infinite; }
+    .loading-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 10000; height: 3px; background: rgba(22,119,255,0.2); }
+    .loading-bar-progress { height: 100%; background: var(--color-primary, #1677FF); animation: progress 1.5s ease-in-out infinite; }
     @keyframes progress { 0% { width: 0%; margin-left: 0; } 50% { width: 70%; margin-left: 15%; } 100% { width: 0%; margin-left: 100%; } }
   `]
 })
