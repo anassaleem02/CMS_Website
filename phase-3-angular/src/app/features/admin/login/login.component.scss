@@ -24,13 +24,13 @@
 
 .orb-1 {
   width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(22,119,255,0.15) 0%, transparent 70%);
   top: -200px; left: -200px;
 }
 
 .orb-2 {
   width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(74,181,216,0.08) 0%, transparent 70%);
   bottom: -100px; right: -100px;
 }
 
@@ -50,6 +50,12 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
+
+  .login-logo-img {
+    height: 56px;
+    width: auto;
+    object-fit: contain;
+  }
 
   .login-logo-name {
     font-family: var(--font-display);

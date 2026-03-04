@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.form = this.fb.group({
-      email: ['admin@fmspower.com', [Validators.required, Validators.email]],
-      password: ['admin123', [Validators.required, Validators.minLength(6)]]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
@@ -40,11 +40,11 @@ export class LoginComponent implements OnInit {
     this.errorMessage = '';
     this.authService.login(this.form.value).subscribe({
       next: () => {
+        this.isLoading = false;
         this.router.navigate(['/admin/dashboard']);
       },
       error: () => {
         this.errorMessage = 'Invalid email or password. Please try again.';
-        this.notificationService.error('Invalid email or password. Please try again.');
         this.isLoading = false;
       }
     });

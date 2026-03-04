@@ -1,7 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { SettingsService } from '../../../core/services/settings.service';
+import { MediaService } from '../../../core/services/media.service';
+import { AuthService } from '../../../core/services/auth.service';
 import { SiteSettings } from '../../../core/models/site-settings.model';
+
+function passwordMatchValidator(): ValidatorFn {
+  return (group: AbstractControl): ValidationErrors | null => {
+    const np = group.get('newPassword')?.value;
+    const cp = group.get('confirmPassword')?.value;
+    return np && cp && np !== cp ? { mismatch: true } : null;
+  };
+}
 
 @Component({
   selector: 'app-admin-settings',
@@ -11,17 +21,41 @@ import { SiteSettings } from '../../../core/models/site-settings.model';
 })
 export class AdminSettingsComponent implements OnInit {
   form!: FormGroup;
+  pwForm!: FormGroup;
+
   loading = true;
   isSaving = false;
   saveSuccess = false;
 
-  constructor(private service: SettingsService, private fb: FormBuilder) {}
+  uploadingLogo = false;
+  uploadingFavicon = false;
+
+  isChangingPw = false;
+  pwError = '';
+  pwSuccess = false;
+
+  showCurrent = false;
+  showNew = false;
+  showConfirm = false;
+
+  constructor(
+    private service: SettingsService,
+    private mediaService: MediaService,
+    private authService: AuthService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.service.get().subscribe(settings => {
       this.buildForm(settings);
       this.loading = false;
     });
+
+    this.pwForm = this.fb.group({
+      currentPassword: ['', Validators.required],
+      newPassword: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required]
+    }, { validators: passwordMatchValidator() });
   }
 
   buildForm(s: SiteSettings): void {
@@ -47,10 +81,64 @@ export class AdminSettingsComponent implements OnInit {
   onSubmit(): void {
     if (this.form.invalid || this.isSaving) return;
     this.isSaving = true;
-    this.service.update(this.form.value).subscribe(() => {
-      this.isSaving = false;
-      this.saveSuccess = true;
-      setTimeout(() => this.saveSuccess = false, 3000);
+    this.service.update(this.form.value).subscribe({
+      next: (saved) => {
+        this.isSaving = false;
+        this.saveSuccess = true;
+        // Update browser favicon dynamically
+        if (saved?.faviconUrl) {
+          const link = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
+          if (link) link.href = saved.faviconUrl;
+        }
+        setTimeout(() => this.saveSuccess = false, 3000);
+      },
+      error: () => { this.isSaving = false; }
+    });
+  }
+
+  onLogoFileSelected(event: Event): void {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (!file) return;
+    this.uploadingLogo = true;
+    this.mediaService.upload(file, 'logo').subscribe({
+      next: (media) => {
+        this.form.patchValue({ logoUrl: media.url });
+        this.uploadingLogo = false;
+      },
+      error: () => { this.uploadingLogo = false; }
+    });
+  }
+
+  onFaviconFileSelected(event: Event): void {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (!file) return;
+    this.uploadingFavicon = true;
+    this.mediaService.upload(file, 'favicon').subscribe({
+      next: (media) => {
+        this.form.patchValue({ faviconUrl: media.url });
+        this.uploadingFavicon = false;
+      },
+      error: () => { this.uploadingFavicon = false; }
+    });
+  }
+
+  onChangePassword(): void {
+    if (this.pwForm.invalid || this.isChangingPw) return;
+    this.isChangingPw = true;
+    this.pwError = '';
+    this.pwSuccess = false;
+    const { currentPassword, newPassword, confirmPassword } = this.pwForm.value;
+    this.authService.changePassword({ currentPassword, newPassword, confirmPassword }).subscribe({
+      next: () => {
+        this.isChangingPw = false;
+        this.pwSuccess = true;
+        this.pwForm.reset();
+        setTimeout(() => this.pwSuccess = false, 4000);
+      },
+      error: (err) => {
+        this.isChangingPw = false;
+        this.pwError = err?.error?.message || 'Current password is incorrect. Please try again.';
+      }
     });
   }
 }

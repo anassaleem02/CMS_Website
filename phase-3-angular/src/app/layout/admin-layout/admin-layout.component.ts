@@ -13,6 +13,10 @@ export class AdminLayoutComponent implements OnInit {
   isSidebarOpen = true;
   currentUser: AuthResponse | null = null;
 
+  get isMobile(): boolean {
+    return window.innerWidth <= 768;
+  }
+
   navItems = [
     { label: 'Dashboard', url: '/admin/dashboard', icon: 'grid' },
     { label: 'Products', url: '/admin/products', icon: 'package' },
@@ -30,6 +34,9 @@ export class AdminLayoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.user$.subscribe(u => this.currentUser = u);
+    if (this.isMobile) {
+      this.isSidebarOpen = false;
+    }
   }
 
   logout(): void {
@@ -39,6 +46,12 @@ export class AdminLayoutComponent implements OnInit {
 
   toggleSidebar(): void {
     this.isSidebarOpen = !this.isSidebarOpen;
+  }
+
+  closeSidebarOnMobile(): void {
+    if (this.isMobile) {
+      this.isSidebarOpen = false;
+    }
   }
 
   getInitials(): string {
