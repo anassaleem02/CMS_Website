@@ -135,6 +135,8 @@ app.UseSwaggerUI(c =>
 
 app.UseSerilogRequestLogging();
 
+// Ensure wwwroot/uploads exists before serving static files
+Directory.CreateDirectory(Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "uploads"));
 app.UseStaticFiles();
 app.UseCors("AllowAngular");
 app.UseResponseCaching();

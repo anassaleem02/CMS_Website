@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { VideoReview } from '../../../core/models/video-review.model';
 import { VideoReviewService } from '../../../core/services/video-review.service';
 
@@ -18,7 +19,7 @@ export class AdminVideoReviewsComponent implements OnInit {
   isSaving = false;
   deleteConfirmId: number | null = null;
 
-  constructor(private service: VideoReviewService, private fb: FormBuilder) {}
+  constructor(private service: VideoReviewService, private fb: FormBuilder, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void { this.load(); }
 
@@ -65,6 +66,16 @@ export class AdminVideoReviewsComponent implements OnInit {
   doDelete(): void {
     if (!this.deleteConfirmId) return;
     this.service.delete(this.deleteConfirmId).subscribe(() => { this.deleteConfirmId = null; this.load(); });
+  }
+
+  getThumbnail(youtubeUrl: string): string {
+    const match = youtubeUrl.match(/embed\/([a-zA-Z0-9_-]+)/);
+    const videoId = match ? match[1] : '';
+    return videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : '';
+  }
+
+  getEmbedUrl(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
   get f() { return this.form.controls; }

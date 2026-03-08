@@ -160,7 +160,7 @@ $header-height: 64px;
   top: 0;
   z-index: 100;
   height: $header-height;
-  background: rgba(10, 10, 11, 0.8);
+  background: color-mix(in srgb, var(--bg-primary) 85%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--glass-border);

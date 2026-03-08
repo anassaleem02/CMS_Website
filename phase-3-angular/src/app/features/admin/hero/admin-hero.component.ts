@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { HeroService } from '../../../core/services/hero.service';
+import { MediaService } from '../../../core/services/media.service';
 import { Hero } from '../../../core/models/hero.model';
 
 @Component({
@@ -14,8 +15,9 @@ export class AdminHeroComponent implements OnInit {
   loading = true;
   isSaving = false;
   saveSuccess = false;
+  isUploading = false;
 
-  constructor(private fb: FormBuilder, private heroService: HeroService) {}
+  constructor(private fb: FormBuilder, private heroService: HeroService, private mediaService: MediaService) {}
 
   ngOnInit(): void {
     this.heroService.getActive().subscribe(hero => {
@@ -49,6 +51,19 @@ export class AdminHeroComponent implements OnInit {
   }
 
   removeStat(i: number): void { this.statsArray.removeAt(i); }
+
+  onBgFileSelected(event: Event): void {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (!file) return;
+    this.isUploading = true;
+    this.mediaService.upload(file, 'hero').subscribe({
+      next: (media) => {
+        this.form.patchValue({ backgroundImageUrl: media.url });
+        this.isUploading = false;
+      },
+      error: () => { this.isUploading = false; }
+    });
+  }
 
   onSubmit(): void {
     if (this.form.invalid || this.isSaving) return;

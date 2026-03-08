@@ -45,6 +45,30 @@ public static class DbInitializer
         }
         if (imagesPatchNeeded) await context.SaveChangesAsync();
 
+        // Seed Video Reviews if empty (added later, may be missing from older seeds)
+        if (!await context.VideoReviews.AnyAsync())
+        {
+            context.VideoReviews.AddRange(
+                new VideoReview { Title = "S.O Series 6.2KW Installation Review", Description = "Customer testimonial showcasing the complete installation process and performance of our 6.2KW solar inverter system.", YoutubeUrl = "https://www.youtube.com/embed/J8uTru18c3k", IsActive = true, DisplayOrder = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+                new VideoReview { Title = "Lithium Battery 51.2V 280Ah Review", Description = "In-depth review of our high-capacity lithium battery system featuring intelligent BMS and exceptional performance.", YoutubeUrl = "https://www.youtube.com/embed/J8uTru18c3k", IsActive = true, DisplayOrder = 1, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+                new VideoReview { Title = "Complete Solar Solution Installation", Description = "Full walkthrough of a complete solar installation including inverter, batteries, and solar panels working together.", YoutubeUrl = "https://www.youtube.com/embed/WxI_sdts9ZY", IsActive = true, DisplayOrder = 2, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow }
+            );
+            await context.SaveChangesAsync();
+        }
+
+        // Seed FAQs if empty (added later, may be missing from older seeds)
+        if (!await context.Faqs.AnyAsync())
+        {
+            context.Faqs.AddRange(
+                new Faq { Question = "What areas do you serve?", Answer = "We serve all areas of Karachi and surrounding regions including DHA, Clifton, Gulshan-e-Iqbal, SITE, Saddar, North Nazimabad, and more.", IsActive = true, DisplayOrder = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+                new Faq { Question = "How long does installation take?", Answer = "A standard residential installation typically takes 1-2 days. Commercial installations may take longer depending on system size.", IsActive = true, DisplayOrder = 1, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+                new Faq { Question = "What warranty do you offer?", Answer = "All our products come with a 5-year manufacturer warranty covering inverters, lithium batteries, and solar panels. We also provide after-sales support throughout the warranty period.", IsActive = true, DisplayOrder = 2, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+                new Faq { Question = "Do you offer financing?", Answer = "Yes, we offer flexible payment plans to make solar energy accessible. Contact us for details on our installment options and financing partners.", IsActive = true, DisplayOrder = 3, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+                new Faq { Question = "How do I maintain my solar system?", Answer = "Our team provides regular maintenance services. Annual checkups are recommended to ensure optimal performance. We also offer remote monitoring so issues can be identified and resolved quickly.", IsActive = true, DisplayOrder = 4, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow }
+            );
+            await context.SaveChangesAsync();
+        }
+
         // Seed only if DB is empty
         if (await context.Users.AnyAsync()) return;
 

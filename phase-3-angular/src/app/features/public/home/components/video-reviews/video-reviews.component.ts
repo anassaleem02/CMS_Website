@@ -16,9 +16,9 @@ export class VideoReviewsComponent implements OnInit {
   constructor(private videoReviewService: VideoReviewService, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
-    this.videoReviewService.getAll().subscribe(reviews => {
-      this.videos = reviews;
-      this.loading = false;
+    this.videoReviewService.getAll().subscribe({
+      next: reviews => { this.videos = reviews; this.loading = false; },
+      error: () => { this.loading = false; }
     });
   }
 

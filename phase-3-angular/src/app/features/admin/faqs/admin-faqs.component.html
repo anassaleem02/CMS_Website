@@ -8,33 +8,51 @@
 
 <div class="skeleton" style="height:300px;border-radius:var(--radius-xl);" *ngIf="loading"></div>
 
-<div class="faq-list" *ngIf="!loading">
-  <div class="faq-item glass-card" *ngFor="let item of items">
-    <div class="faq-header">
-      <div class="faq-meta">
-        <span class="badge" [class.badge-primary]="item.isActive" [class.badge-muted]="!item.isActive">{{ item.isActive ? 'Active' : 'Inactive' }}</span>
-        <span class="order-badge">Order: {{ item.displayOrder }}</span>
+<div class="empty-state glass-card" *ngIf="!loading && items.length === 0">
+  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--text-muted)">
+    <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+  </svg>
+  <h3>No FAQs Yet</h3>
+  <p>Add frequently asked questions to help your customers.</p>
+  <button class="btn btn-primary" (click)="openCreate()">Add FAQ</button>
+</div>
+
+<div class="faq-list" *ngIf="!loading && items.length > 0">
+  <div class="faq-item glass-card" *ngFor="let item of items; let i = index">
+    <div class="faq-number">{{ i + 1 }}</div>
+    <div class="faq-content">
+      <div class="faq-top">
+        <div class="faq-meta">
+          <span class="badge" [class.badge-primary]="item.isActive" [class.badge-muted]="!item.isActive">{{ item.isActive ? 'Active' : 'Inactive' }}</span>
+          <span class="order-badge">Order: {{ item.displayOrder }}</span>
+        </div>
+        <div class="item-actions">
+          <button class="btn btn-outline btn-sm" (click)="openEdit(item)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            Edit
+          </button>
+          <button class="btn btn-sm delete-btn" (click)="confirmDelete(item.id)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            Delete
+          </button>
+        </div>
       </div>
-      <div class="item-actions">
-        <button class="btn btn-outline btn-sm" (click)="openEdit(item)">Edit</button>
-        <button class="btn btn-sm delete-btn" (click)="confirmDelete(item.id)">Delete</button>
-      </div>
+      <h3>{{ item.question }}</h3>
+      <p>{{ item.answer }}</p>
     </div>
-    <h3>{{ item.question }}</h3>
-    <p>{{ item.answer }}</p>
   </div>
 </div>
 
 <!-- Form Modal -->
 <div class="modal-overlay" *ngIf="showForm" (click)="showForm = false">
-  <div class="modal glass-card" (click)="$event.stopPropagation()">
+  <div class="modal" (click)="$event.stopPropagation()">
     <div class="modal-header">
       <h2>{{ editingId ? 'Edit FAQ' : 'Add FAQ' }}</h2>
       <button class="modal-close" (click)="showForm = false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="form-group"><label>Question *</label><input type="text" formControlName="question" placeholder="e.g. What areas do you serve?" /></div>
-      <div class="form-group"><label>Answer *</label><textarea formControlName="answer" rows="4" placeholder="Detailed answer..."></textarea></div>
+      <div class="form-group"><label>Answer *</label><textarea formControlName="answer" rows="5" placeholder="Detailed answer..."></textarea></div>
       <div class="form-row-2">
         <div class="form-group"><label>Display Order</label><input type="number" formControlName="displayOrder" /></div>
         <div class="form-group checkbox-group"><label><input type="checkbox" formControlName="isActive" /> Active</label></div>
@@ -47,11 +65,15 @@
   </div>
 </div>
 
+<!-- Delete Confirmation -->
 <div class="modal-overlay" *ngIf="deleteConfirmId" (click)="deleteConfirmId = null">
-  <div class="modal modal-sm glass-card" (click)="$event.stopPropagation()">
+  <div class="modal modal-sm" (click)="$event.stopPropagation()">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--color-error)">
+      <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
+    </svg>
     <h3>Delete FAQ?</h3>
-    <p>This cannot be undone.</p>
-    <div class="modal-actions">
+    <p>This action cannot be undone.</p>
+    <div class="modal-actions" style="justify-content:center;width:100%;">
       <button class="btn btn-outline" (click)="deleteConfirmId = null">Cancel</button>
       <button class="btn" style="background:var(--color-error);color:white;" (click)="doDelete()">Delete</button>
     </div>
